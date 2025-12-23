@@ -3,15 +3,27 @@ import cors from 'cors'
 import 'dotenv/config'
 import connectDB from './configs/mongodb.js'
 import { clerkWebhooks } from './controllers/webhooks.js'
+
 const app = express()
-connectDB()
-app.use(cors())
 const port = process.env.PORT || 5000
 
-app.get('/', (req, res) => res.send('Hello World!'))
+// Connect DB
+connectDB()
+
+app.use(cors())
+
+// 👇 Webhook route (RAW BODY)
 app.post(
-  "/webhooks/clerk",
+  "/clerk",
   express.raw({ type: "application/json" }),
   clerkWebhooks
 );
-app.listen(port, () => console.log(`Example app listening on port ${port}!`))
+
+// 👇 باقي التطبيق
+app.use(express.json())
+
+app.get('/', (req, res) => res.send('Hello World!'))
+
+app.listen(port, () =>
+  console.log(`Server running on port ${port}`)
+)
