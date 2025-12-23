@@ -9,5 +9,9 @@ app.use(cors())
 const port = process.env.PORT || 5000
 
 app.get('/', (req, res) => res.send('Hello World!'))
-app.post('/clerk',express.json(),clerkWebhooks)
+app.post(
+  "/webhooks/clerk",
+  express.raw({ type: "application/json" }),
+  clerkWebhooks
+);
 app.listen(port, () => console.log(`Example app listening on port ${port}!`))
