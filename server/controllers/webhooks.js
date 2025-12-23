@@ -16,6 +16,8 @@ export const clerkWebhooks = async (req, res) => {
 
     const { data, type } = event;
 
+    console.log("Webhook received:", type);
+console.log("User ID:", data?.id);
     switch (type) {
       case "user.created": {
         const userData = {
