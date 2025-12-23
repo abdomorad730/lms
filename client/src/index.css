@@ -1,0 +1,87 @@
+@import url('https://fonts.googleapis.com/css2?family=Mona+Sans:ital,wght@0,200..900;1,200..900&family=Outfit:wght@100..900&display=swap');
+@import "tailwindcss";
+
+*{
+    font-family: 'Outfit', sans-serif;
+}
+.h-custom{
+    height: 500px;
+}
+.text-custom-lg{
+    font-size: 36px;
+    line-height: 1.6;
+}
+.text-custom-sm{
+    font-size: 26px;
+    line-height: 1.4;
+}
+@layer base{
+    html{
+        scroll-behavior: smooth;
+    }
+}
+::-webkit-scrollbar{
+    display: none;
+}
+
+.rich-text{ font-size: 15px; color: #7A7B7D;}
+
+.rich-text h1 {
+    font-weight: 800;
+    color: #252525;
+    margin: 32px 0;
+    font-size: 36px;
+}
+.rich-text h2{
+    font-weight: 700;
+    color: #252525;
+    margin: 24px 0;
+    font-size: 22px;
+}
+.rich-text h3{
+    font-weight: 600;
+    color: #333333;
+    margin: 20px 0;
+    font-size: 18px;
+}
+.rich-text h4{
+    font-weight: 500;
+    color: #444444;
+    margin: 16px 0;
+    font-size: 16px;
+}
+.rich-text p {
+    margin-bottom: 16px;;
+}   
+.rich-text ul {
+    list-style-type: disc;
+    margin-left: 30px;
+}
+.rich-text ol {
+    list-style-type: decimal;
+    margin-left: 30px;
+}
+.rich-text h5 {
+    font-weight: 400;
+    color: #555555;
+    margin: 12px 0;
+    font-size: 14px;
+}
+.rich-text h6 {
+    font-weight: 400;
+    color: #666666;
+    margin: 8px 0;
+    font-size: 12px;
+}
+.rich-text strong {
+    font-weight: 700;
+}
+.rich-text li {
+    margin-bottom: 8px;
+}
+.custom-card{
+    box-shadow: 0 4px 15px 2px rgba(0, 0, 0, 0.1);
+}
+.custom-opacity{
+    background-color: rgba(0, 0, 0, 0.6) ;
+}
