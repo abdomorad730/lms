@@ -5,25 +5,9 @@ import connectDB from './configs/mongodb.js'
 import { clerkWebhooks } from './controllers/webhooks.js'
 
 const app = express()
-const port = process.env.PORT || 5000
-
-// Connect DB
 connectDB()
-
 app.use(cors())
-
-// 👇 Webhook route (RAW BODY)
-app.post(
-  "/clerk",
-  express.raw({ type: "application/json" }),
-  clerkWebhooks
-);
-
-// 👇 باقي التطبيق
-app.use(express.json())
-
+const port = process.env.PORT || 5000
 app.get('/', (req, res) => res.send('Hello World!'))
-
-app.listen(port, () =>
-  console.log(`Server running on port ${port}`)
-)
+app.post("/clerk", express.json(), clerkWebhooks);
+app.listen(port, () => console.log(`Example app listening on port ${ port }!`))
