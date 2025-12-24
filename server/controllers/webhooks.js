@@ -15,10 +15,9 @@ export const clerkWebhooks = async (req, res) => {
     const event = whook.verify(payload, headers);
     const { data, type } = event;
 
-    console.log("Webhook:", type);
 
     const userData = {
-      name: data.first_name || "User",
+      name: data.first_name + ' ' + last_name || "User",
       email: data.email_addresses?.[0]?.email_address || "",
       imageUrl: data.image_url || "",
     };
