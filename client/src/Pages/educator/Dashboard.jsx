@@ -2,17 +2,33 @@ import React from 'react'
 import { AppContext } from '../../context/AppContext';
 import { assets, dummyDashboardData } from '../../assets/assets';
 import Loading from '../../components/student/Loading';
+import axios from 'axios';
+import { toast } from 'react-toastify';
 
 const Dashboard = () => {
-  const { currency } = React.useContext(AppContext);
+  const { currency, backendUrl, getToken, isEducator } = React.useContext(AppContext);
   const [dashboardData, setDashboardData] = React.useState(null);
   const fetchDashboardData = async () => {
     //fetch dashboard data from backend
-    setDashboardData(dummyDashboardData);
+    try {
+      const token = await getToken()
+      const { data } = await axios.get(`${backendUrl}/api/educator/dashboard`, { headers: { Authorization: `Bearer ${token}` } })
+      if (data.success) {
+        setDashboardData(data.dashboardData)
+      } else {
+        toast.error(data.message)
+      }
+    } catch (error) {
+      toast.error(error.message)
+
+    }
   }
   React.useEffect(() => {
-    fetchDashboardData();
-  }, [])
+    if(isEducator){
+fetchDashboardData()
+    }
+    
+  }, [isEducator])
   return dashboardData ? (
     <div className='min-h-screen flex flex-col items-start justify-between gap-8 md:p-8 pb-0 pt-8 '>
       <div className='space-y-5'>
@@ -56,7 +72,7 @@ const Dashboard = () => {
                 {dashboardData.enrolledStudentsData.map((enrollment, index) => (
                   <tr key={index} className='border-b border-gray-500/20 '>
                     <td className='px-4 py-3 text-center hidden sm:table-cell'>{index + 1}</td>
-                    <td className='md:px-4 px-2 py-3 flex items-center space-x-3'><img src={enrollment.student.imageUrl} alt="profile" srcset="" className='w-9 h-9 rounded-full'/><span className='truncate'>{enrollment.student.name}</span></td>
+                    <td className='md:px-4 px-2 py-3 flex items-center space-x-3'><img src={enrollment.student.imageUrl} alt="profile" srcset="" className='w-9 h-9 rounded-full' /><span className='truncate'>{enrollment.student.name}</span></td>
                     <td className='px-4 py-3 truncate'>{enrollment.courseTitle}</td>
                   </tr>
                 ))}
