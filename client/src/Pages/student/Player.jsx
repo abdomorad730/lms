@@ -58,8 +58,10 @@ const Player = () => {
     try {
       const token = await getToken()
       const { data } = await axios.post(`${backendUrl}/api/user/get-course-progress`, { courseId }, { headers: { Authorization: `Bearer ${token}` } })
+
       if (data.success) {
         setProgressData(data.progressData)
+
       } else {
         toast.error(data.message)
       }
@@ -147,7 +149,7 @@ const Player = () => {
                 <p>{`${playerData.chapter}.${playerData.lecture} ${playerData.lectureTitle}`}</p>
                 <button onClick={()=>{
                   markLectureAsCompleted(playerData.lectureId)
-                }} className='text-blue-600'>{progressData && progressData.lectureCompleted.includes(playerData.lectureId) ? "Completed" : "Mark as complete"}</button>
+                }} className='text-blue-600'>{(progressData && progressData.lectureCompleted.includes(playerData.lectureId)) ? "Completed" : "Mark as complete"}</button>
               </div>
             </div>) : <img src={courseData ? courseData.courseThumbnail : ''} alt="" srcset="" />}
         </div>
