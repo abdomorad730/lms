@@ -1,0 +1,43 @@
+<svg width="900" height="260" viewBox="0 0 900 260" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="brainGradient" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#6A00FF"></stop>
+      <stop offset="100%" stop-color="#0A1AFF"></stop>
+    </linearGradient>
+    <linearGradient id="textGradient" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#0A1AFF"></stop>
+      <stop offset="100%" stop-color="#6A00FF"></stop>
+    </linearGradient>
+  </defs>
+
+  <!-- Brain / B Icon -->
+  <g transform="translate(40,40)">
+    <path d="M80 0
+             C40 0 0 30 0 80
+             C0 130 40 160 80 160
+             L120 160
+             C160 160 200 130 200 80
+             C200 30 160 0 120 0
+             Z" fill="url(#brainGradient)"></path>
+
+    <!-- Neural nodes -->
+    <circle cx="55" cy="45" r="6" fill="white"></circle>
+    <circle cx="35" cy="75" r="6" fill="white"></circle>
+    <circle cx="60" cy="105" r="6" fill="white"></circle>
+    <circle cx="90" cy="70" r="6" fill="white"></circle>
+
+    <line x1="55" y1="45" x2="35" y2="75" stroke="white" stroke-width="2"></line>
+    <line x1="35" y1="75" x2="60" y2="105" stroke="white" stroke-width="2"></line>
+    <line x1="60" y1="105" x2="90" y2="70" stroke="white" stroke-width="2"></line>
+  </g>
+
+  <!-- Text -->
+  <text x="300" y="140" font-size="88" font-weight="700" font-family="Poppins, Inter, Arial, sans-serif" fill="url(#textGradient)">
+    Brainlyx
+  </text>
+
+  <!-- Tagline -->
+  <text x="305" y="185" font-size="26" font-family="Poppins, Inter, Arial, sans-serif" fill="#7A7A7A" letter-spacing="4">
+    LEARN SMARTER
+  </text>
+</svg>
